@@ -1,28 +1,76 @@
 const { faker } = require('@faker-js/faker');
 const { trueOrNot, randomElement } = require('../helpers/helpers');
 const { generate_OneVideoGame, generate_multipleVideoGames } = require('../src/videoGameGenerator');
+const { generate_OneCard } = require('../src/paymentCardGenerator');
 
-const titles = [ "Mr.", "Ms.", "Mrs.", "Dr." ];
+const titles = [
+    "Mr.",
+    "Ms.",
+    "Mrs.",
+    "Dr."
+];
+
+const onlinePaymentServices = [
+    'Google Pay',
+    'PayPal'
+];
+
+const suffixes = [ 
+    'Jr.', 
+    'Sr.', 
+    '\u2160', 
+    '\u2161', 
+    '\u2162'
+];
+
+const membershipTypes = [
+    'Apprentice Membership: (level 1)',
+    'Squire Membership: (level 2)',
+    'Knight Membership: (level 3)'
+];
+
+const coupons = [
+    '10% Coupon',
+    '20% Coupon',
+    '30% Coupon',
+    '40% Coupon',
+    '50% Coupon'
+];
+
+const memberSince_Options = [
+    faker.date.past(),
+    faker.date.recent()
+];
+
+const couponsOrNot = generate_oneOrMoreCoupons(randomCoupon);
+const randomPaymentService = randomElement(onlinePaymentServices);
+const listOfGames_OneToTen = generate_multipleVideoGames(Math.floor(Math.random() * 10));
+const wishListGames_OneTo100 = generate_multipleVideoGames(Math.floor(Math.random() * 100));
 const randomTitle = randomElement(titles);
+const titleOrNo = titleOrNoTitle(randomTitle);
+const randomSuffix = randomElement(suffixes);
+const suffixOrNo = generate_SuffixOrNot(randomSuffix);
+const middleNameOrNot = generate_MiddleNameOrNot(faker.person.middleName());
+const randomAge1to60 = Math.floor(Math.random() * 60);
+const randomMemberSince = randomElement(memberSince_Options);
+const randomMembershipType = randomElement(membershipTypes);
+const membershipPaymentDate = generate_membershipPaymentDate(randomMemberSince);
+const randomWalletAmount = `$${(Math.random() * 500).toFixed(2)}`;
+const randomCoupon = randomElement(coupons);
+const fundsOrNot = fundsInWalletOrNot(randomWalletAmount);
+
 
 function titleOrNoTitle(title) {
     return trueOrNot() ? title : undefined;
 }
 
-const titleOrNo = titleOrNoTitle(randomTitle);
-
-const suffixes = [ 'Jr.', 'Sr.', '\u2160', '\u2161', '\u2162' ];
-const randomSuffix = randomElement(suffixes);
-
 function generate_SuffixOrNot(suffix) {
     return trueOrNot() ? suffix : undefined;
 }
-const suffixOrNo = generate_SuffixOrNot(randomSuffix);
 
 function generate_MiddleNameOrNot(middleName) {
     return trueOrNot() ? middleName : undefined;
 }
-const middleNameOrNot = generate_MiddleNameOrNot(faker.person.middleName());
 
 function generate_FullName(userData) {
     let fullName = [];
@@ -45,20 +93,6 @@ function generate_FullName(userData) {
     return fullName.join(' ');
 }
 
-const randomAge1to60 = Math.floor(Math.random() * 60);
-
-const memberSince_Options = [
-    faker.date.past(),
-    faker.date.recent()
-];
-const randomMemberSince = randomElement(memberSince_Options);
-
-const membershipTypes = [
-    'Apprentice Membership: (level 1)',
-    'Squire Membership: (level 2)',
-    'Knight Membership: (level 3)'
-];
-const randomMembershipType = randomElement(membershipTypes);
 
 function generate_membershipPaymentDate(date) {
     const randomDate = new Date(date);
@@ -67,24 +101,11 @@ function generate_membershipPaymentDate(date) {
     const futureDateLocaleString = futureDate.toLocaleDateString('en-US');
     return futureDateLocaleString;
 }
-const membershipPaymentDate = generate_membershipPaymentDate(randomMemberSince);
 
-const randomWalletAmount = `$${(Math.random() * 500).toFixed(2)}`;
 
 function fundsInWalletOrNot(funds) {
   return trueOrNot() ? funds : `$0.00`;
 }
-const fundsOrNot = fundsInWalletOrNot(randomWalletAmount);
-
-
-const coupons = [
-    '10% Coupon',
-    '20% Coupon',
-    '30% Coupon',
-    '40% Coupon',
-    '50% Coupon'
-];
-const randomCoupon = randomElement(coupons);
 
 function generate_oneOrMoreCoupons(coupon) {
     const oneToFive = Math.floor(Math.random() * 5);
@@ -98,21 +119,35 @@ function generate_oneOrMoreCoupons(coupon) {
 
     return result;
 }
-const couponsOrNot = generate_oneOrMoreCoupons(randomCoupon);
 
-const onlinePaymentServices = [
-    'Google Pay',
-    'PayPal'
-];
-const randomPaymentService = randomElement(onlinePaymentServices);
+function generate_randomNumOfCards(fullName) {
+    let cardList = [];
 
-const listOfGames_OneToTen = generate_multipleVideoGames(Math.floor(Math.random() * 10));
-const wishListGames_OneTo100 = generate_multipleVideoGames(Math.floor(Math.random() * 100));
+    const OneToFive = Math.floor(Math.random() * 5);
 
+    for (let i = 0; i < OneToFive; i++) {
+        cardList.push(generate_OneCard(fullName));
+    }
 
+    return cardList;
+}
+
+function randomlyChoosePreferredCard(userData) {
+    if ('electricPaymentMethod' in userData) {
+        const depth1 = userData.electricPaymentMethodl
+        if ('cardPayment' in depth1) {
+            const depth2 = depth1.cardPayment;
+            if ('cards' in depth2) {
+                const cardList = depth2.cards;
+                return randomElement(cardList);
+            } throw 'Either "cards" and/or "preferredCard" are missing in "cardPayment" object';
+        }
+    }
+}
 
 function generateUser() {
     const fullName = generate_FullName(user);
+    const chosenCard = randomlyChoosePreferredCard(user);
 
     const user = {
         id: faker.string.uuid(),
@@ -149,20 +184,13 @@ function generateUser() {
             wallet: fundsOrNot,
             coupon: [...couponsOrNot],
             onlineFinanceService: randomPaymentService, // This should be either 'Google Pay' or 'Paypal'
-            card: {
-                creditCard: [
-                    { undefined },
-                    { undefined }
-                ],
-                debitCard: [
-                    { undefined },
-                    { undefined }
-                ],
-                preferredCard: null
+            cardPayment: {
+                cards: [...generate_randomNumOfCards(fullName)],
+                preferredCard: chosenCard
             }
         },
         orders: {
-            currentOrders: [
+            scheduledOrders: [
                 { undefined },
                 { undefined }
             ],
