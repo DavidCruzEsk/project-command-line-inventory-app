@@ -1,0 +1,250 @@
+[
+  {
+    "id": "63db945c-eadd-4d53-bb13-dbbfa7c4e092",
+    "name": {
+      "firstName": "Hermann",
+      "lastName": "Emmerich",
+      "suffix": "Jr."
+    },
+    "age": 45,
+    "address": "280 Ilene Curve",
+    "state": "Alaska",
+    "zipcode": "3581-7307",
+    "country": "Morocco",
+    "contact": {
+      "emails": "Breanna.Howell@gmail.com",
+      "phone": {
+        "homePhone": "(497) 606-5620 x20423",
+        "mobilePhone": "594.883.7866 x2554"
+      }
+    },
+    "profileImage": "https://avatars.githubusercontent.com/u/54277016",
+    "memberStatus": {
+      "membershipRenewalDate": "Invalid Date"
+    },
+    "wishlist": [
+      {
+        "id": "28c12dfd-17d7-41d7-9b61-c9a101491262",
+        "name": "array 3",
+        "genre": "Racing",
+        "ESRB_Rating": "E (Everyone)",
+        "release_date": "2024-02-25T04:30:20.987Z",
+        "publisher": "EA Games",
+        "developer": "array",
+        "gameCoverImage": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/550.jpg",
+        "inStock": "In stock",
+        "price": "$NaN"
+      },
+      {
+        "id": "5717dc6b-8019-4666-a628-fecfbce16615",
+        "name": "array 3",
+        "genre": "Racing",
+        "ESRB_Rating": "E (Everyone)",
+        "release_date": "2024-02-25T04:30:20.987Z",
+        "publisher": "EA Games",
+        "developer": "array",
+        "gameCoverImage": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/550.jpg",
+        "inStock": "In stock",
+        "price": "$NaN"
+      }
+    ],
+    "cart": [],
+    "electricPaymentMethod": {
+      "wallet": "$186.96",
+      "coupon": [],
+      "cardPayment": {
+        "cartId": "9e297150-aff2-4260-b3db-8fc4f685acc3"
+      }
+    },
+    "orders": {
+      "allOrders": {
+        "scheduledOrders": [],
+        "pastOrders": [],
+        "cancelledOrders": []
+      }
+    }
+  },
+  {
+    "id": "f78157a9-0836-467b-bd47-b18054e2af4e",
+    "name": {
+      "firstName": "Luis",
+      "middleName": "Cameron",
+      "lastName": "Kautzer"
+    },
+    "age": 48,
+    "address": "2393 Abbey Road",
+    "state": "Oregon",
+    "zipcode": "8655-3917",
+    "country": "Antigua and Barbuda",
+    "contact": {
+      "emails": "Litzy.Fritsch@yahoo.com",
+      "phone": {
+        "homePhone": "277-911-7492 x662",
+        "mobilePhone": "304-321-0387"
+      }
+    },
+    "profileImage": "https://avatars.githubusercontent.com/u/28639565",
+    "memberStatus": {
+      "isMember": true,
+      "memberSince": "2023-11-29T23:39:36.902Z",
+      "membershipType": "Squire Membership: (level 2)",
+      "membershipRenewalDate": "12/29/2023"
+    },
+    "wishlist": [],
+    "cart": [
+      {
+        "id": "42c2b64c-9b9d-4d71-931d-9c044160b802",
+        "name": "",
+        "genre": "Platform",
+        "release_date": "2025-02-12T19:05:48.017Z",
+        "platforms": "Playstation 5",
+        "publisher": "EA Games",
+        "developer": "",
+        "inStock": "Not in stock (Pre-order available!)",
+        "price": "$NaN"
+      }
+    ],
+    "electricPaymentMethod": {
+      "wallet": "$0.00",
+      "coupon": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "onlineFinanceService": "Google Pay",
+      "cardPayment": {
+        "cartId": "763b991b-550b-4d03-933c-2978746e770b"
+      }
+    },
+    "orders": {
+      "allOrders": {
+        "scheduledOrders": [],
+        "pastOrders": [],
+        "cancelledOrders": []
+      }
+    }
+  },
+  {
+    "id": "a788927a-d949-466b-893c-e8775ba630fa",
+    "name": {
+      "firstName": "Hazel",
+      "middleName": "Cameron",
+      "lastName": "Douglas"
+    },
+    "age": 48,
+    "address": "40814 West Avenue",
+    "state": "Idaho",
+    "zipcode": "0103-7627",
+    "country": "Jamaica",
+    "contact": {
+      "emails": "Emmalee.Nader33@gmail.com",
+      "phone": {
+        "homePhone": "242-547-1529 x585",
+        "mobilePhone": "622-929-3954"
+      }
+    },
+    "profileImage": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/536.jpg",
+    "memberStatus": {
+      "isMember": true,
+      "memberSince": "2023-11-29T23:39:36.902Z",
+      "membershipType": "Squire Membership: (level 2)",
+      "membershipRenewalDate": "12/29/2023"
+    },
+    "wishlist": [],
+    "cart": [
+      {
+        "id": "42c2b64c-9b9d-4d71-931d-9c044160b802",
+        "name": "",
+        "genre": "Platform",
+        "release_date": "2025-02-12T19:05:48.017Z",
+        "platforms": "Playstation 5",
+        "publisher": "EA Games",
+        "developer": "",
+        "inStock": "Not in stock (Pre-order available!)",
+        "price": "$NaN"
+      }
+    ],
+    "electricPaymentMethod": {
+      "wallet": "$0.00",
+      "coupon": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "onlineFinanceService": "Google Pay",
+      "cardPayment": {
+        "cartId": "819e6d49-9d29-41e1-a63e-1292d396224f"
+      }
+    },
+    "orders": {
+      "allOrders": {
+        "scheduledOrders": [],
+        "pastOrders": [],
+        "cancelledOrders": []
+      }
+    }
+  },
+  {
+    "id": "138a4dd2-f47b-4e4f-9223-a4d51e5380dd",
+    "name": {
+      "firstName": "Ebba",
+      "middleName": "Cameron",
+      "lastName": "Nolan"
+    },
+    "age": 48,
+    "address": "9362 Genevieve Ports",
+    "state": "South Dakota",
+    "zipcode": "9227-1512",
+    "country": "Nicaragua",
+    "contact": {
+      "emails": "Liliana_Purdy@yahoo.com",
+      "phone": {
+        "homePhone": "(770) 939-6065 x7077",
+        "mobilePhone": "1-241-630-8690 x73949"
+      }
+    },
+    "profileImage": "https://avatars.githubusercontent.com/u/61483199",
+    "memberStatus": {
+      "memberSince": "2023-11-29T23:39:36.902Z",
+      "membershipType": "Squire Membership: (level 2)",
+      "isMembershipAutoRenewal": true,
+      "membershipRenewalDate": "12/29/2023"
+    },
+    "wishlist": [],
+    "cart": [
+      {
+        "id": "42c2b64c-9b9d-4d71-931d-9c044160b802",
+        "name": "",
+        "genre": "Platform",
+        "release_date": "2025-02-12T19:05:48.017Z",
+        "platforms": "Playstation 5",
+        "publisher": "EA Games",
+        "developer": "",
+        "inStock": "Not in stock (Pre-order available!)",
+        "price": "$NaN"
+      }
+    ],
+    "electricPaymentMethod": {
+      "wallet": "$0.00",
+      "coupon": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "onlineFinanceService": "Google Pay",
+      "cardPayment": {
+        "cartId": "d78e9d5a-f656-4609-a9f9-7e798d7cc03a"
+      }
+    },
+    "orders": {
+      "allOrders": {
+        "scheduledOrders": [],
+        "pastOrders": [],
+        "cancelledOrders": []
+      }
+    }
+  }
+]

@@ -42,10 +42,9 @@ const memberSince_Options = [
     faker.date.recent()
 ];
 
-const couponsOrNot = generate_oneOrMoreCoupons(randomCoupon);
 const randomPaymentService = randomElement(onlinePaymentServices);
-const listOfGames_OneToTen = generate_multipleVideoGames(Math.floor(Math.random() * 10));
-const wishListGames_OneTo100 = generate_multipleVideoGames(Math.floor(Math.random() * 100));
+const listOfGames_OneToThree = generate_multipleVideoGames(Math.floor(Math.random() * 3));
+const wishListGames_OneToFive = generate_multipleVideoGames(Math.floor(Math.random() * 5));
 const randomTitle = randomElement(titles);
 const titleOrNo = titleOrNoTitle(randomTitle);
 const randomSuffix = randomElement(suffixes);
@@ -57,6 +56,7 @@ const randomMembershipType = randomElement(membershipTypes);
 const membershipPaymentDate = generate_membershipPaymentDate(randomMemberSince);
 const randomWalletAmount = `$${(Math.random() * 500).toFixed(2)}`;
 const randomCoupon = randomElement(coupons);
+const couponsOrNot = generate_oneOrMoreCoupons(randomCoupon);
 const fundsOrNot = fundsInWalletOrNot(randomWalletAmount);
 
 
@@ -146,21 +146,23 @@ function randomlyChoosePreferredCard(userData) {
 }
 
 function generateUser() {
-    const fullName = generate_FullName(user);
-    const chosenCard = randomlyChoosePreferredCard(user);
-
+    // const fullName = generate_FullName(user);
+    // const chosenCard = randomlyChoosePreferredCard(user);
+    
     const user = {
-        id: faker.string.uuid(),
+        id: faker.string.uuid(1000),
         name: {
             title: titleOrNo,
             firstName: faker.person.firstName(),
             middleName: middleNameOrNot,
             lastName: faker.person.lastName(),
             suffix: suffixOrNo,
-            fullName: fullName
+            // fullName: fullName
         },
         age: randomAge1to60,
         address: faker.location.streetAddress(),
+        state: faker.location.state(),
+        zipcode: faker.location.zipCode('####-####'),
         country: faker.location.country(),
         contact: {
             emails: faker.internet.email(),
@@ -171,38 +173,43 @@ function generateUser() {
         },
         profileImage: faker.image.avatar(),
         memberStatus: {
-            isMember: trueOrNot(), // boolean | if member is true, they get a small discount on products
+            isMember: trueOrNot(),
             memberSince: randomMemberSince,
-            membershipType: randomMembershipType, // if they are a member, this will determine the discount rate. If not a member, this will be false
-            isMembershipAutoRenewal: trueOrNot(), // boolean which determines if a person automatically renews their monthly payment
-            membershipRenewalDate: membershipPaymentDate // shows when the user will auto-renew their membership, 30 days after membershipSince.
-            // the membership renewal will use the preferred card payment in the electricPaymentMethod object.
+            membershipType: randomMembershipType, 
+            isMembershipAutoRenewal: trueOrNot(),
+            membershipRenewalDate: membershipPaymentDate 
         },
-        wishlist: [...wishListGames_OneTo100], // can add up to 100 games on the wishlist
-        cart: [...listOfGames_OneToTen], // can add up to 10 games in the cart
+        wishlist: [...wishListGames_OneToFive],
+        cart: [...listOfGames_OneToThree],
         electricPaymentMethod: {
             wallet: fundsOrNot,
             coupon: [...couponsOrNot],
-            onlineFinanceService: randomPaymentService, // This should be either 'Google Pay' or 'Paypal'
+            onlineFinanceService: randomPaymentService,
             cardPayment: {
-                cards: [...generate_randomNumOfCards(fullName)],
-                preferredCard: chosenCard
+                cartId: faker.string.uuid(),
+                cards: /* [...generate_randomNumOfCards(fullName)] */ undefined,
+                preferredCard: /* chosenCard */ undefined
             }
         },
         orders: {
-            scheduledOrders: [
-                { undefined },
-                { undefined }
-            ],
-            pastOrders: [
-                { undefined },
-                { undefined }
-            ],
-            cancelledOrders: [
-                { undefined },
-                { undefined }
-            ]
+            allOrders: {
+                scheduledOrders: [],
+                pastOrders: [],
+                cancelledOrders: []
+            }
         }
     }
     return user;
 }
+
+function generate_multipleUsers(number) {
+    let userList = [];
+
+    for (let i = 0; i < number; i++) {
+        userList.push(generateUser());
+    }
+
+    return userList;
+}
+
+module.exports = { generateUser, generate_multipleUsers };
